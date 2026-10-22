@@ -1,0 +1,4 @@
+PressureMap Display is a renamed, subsetted 600-weight web font derived from Noto Serif SC.
+Original font copyright: © 2017–2023 Adobe (http://www.adobe.com/).
+Licensed under the SIL Open Font License 1.1; see OFL.txt.
+Only characters needed by the three homepage headlines and English translations are included.

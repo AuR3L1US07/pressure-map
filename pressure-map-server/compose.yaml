@@ -1,0 +1,47 @@
+services:
+  api:
+    build: .
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      Cloud__DataDirectory: /data
+      Cloud__KnownProxies__0: 172.30.88.2
+      Ai__ApiKey: ${ARK_API_KEY:-}
+      Ai__Model: ${ARK_MODEL:-deepseek-v4-1-flash-261017}
+      Ai__DailyLimit: ${AI_DAILY_LIMIT:-500}
+    volumes:
+      - cloud-data:/data
+    networks:
+      cloud:
+        ipv4_address: 172.30.88.3
+    security_opt:
+      - no-new-privileges:true
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN in .env}
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # Only used in IP-only mode (deploy/Caddyfile.ip); ignored when a public CA signs.
+      - ./deploy/certs:/etc/caddy/certs:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      cloud:
+        ipv4_address: 172.30.88.2
+    depends_on:
+      - api
+networks:
+  cloud:
+    ipam:
+      config:
+        - subnet: 172.30.88.0/24
+volumes:
+  cloud-data:
+  caddy-data:
+  caddy-config:

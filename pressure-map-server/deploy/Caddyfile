@@ -1,0 +1,9 @@
+{$DOMAIN} {
+    encode zstd gzip
+    handle_path /api/* {
+        reverse_proxy api:8080
+    }
+    handle {
+        respond "Pressure Map cloud API" 200
+    }
+}

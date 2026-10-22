@@ -1,0 +1,25 @@
+# XcodeGen 备用工程描述：不想用随附的 project.pbxproj 时，
+# 在 macOS 上执行 `brew install xcodegen && cd ios && xcodegen` 重新生成工程。
+name: PressureMap
+options:
+  bundleIdPrefix: com.pressuremap
+  deploymentTarget:
+    iOS: "14.0"
+  createIntermediateGroups: true
+targets:
+  PressureMap:
+    type: application
+    platform: iOS
+    sources:
+      - path: PressureMap
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.pressuremap.mobile
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 1
+        INFOPLIST_FILE: PressureMap/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic

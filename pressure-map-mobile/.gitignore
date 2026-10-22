@@ -1,0 +1,17 @@
+# 构建产物
+build/
+dist/*.idsig
+*.log
+
+# 工具链（脚本会重新下载）
+.tools/
+
+# iOS 页面副本（由 scripts/prepare-ios.sh 生成）
+ios/PressureMap/www/
+
+# 发布用静态站点（由 scripts/build-site.sh 生成）
+site/
+
+# 系统
+.DS_Store
+Thumbs.db

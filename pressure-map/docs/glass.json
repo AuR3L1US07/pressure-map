@@ -1,0 +1,8 @@
+{
+  "requested": true,
+  "actual": "AcrylicBlur",
+  "native_blur": true,
+  "tint": 0.48,
+  "foreground_opacity": 1,
+  "window_opacity": 1
+}

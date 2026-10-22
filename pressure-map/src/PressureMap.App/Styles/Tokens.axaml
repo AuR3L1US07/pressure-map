@@ -1,0 +1,98 @@
+  <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+          <SolidColorBrush x:Key="PageBrush" Color="#F6F4F1" />
+          <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />
+          <SolidColorBrush x:Key="SurfaceAltBrush" Color="#F6F4F1" />
+          <SolidColorBrush x:Key="SubtleBorderBrush" Color="#E6E2DB" />
+          <SolidColorBrush x:Key="TableHeaderBrush" Color="#F6F4F1" />
+          <SolidColorBrush x:Key="TextPrimaryBrush" Color="#1F1D2B" />
+          <SolidColorBrush x:Key="TextSecondaryBrush" Color="#5F5B6B" />
+          <SolidColorBrush x:Key="DangerBrush" Color="#D64545" />
+          <SolidColorBrush x:Key="SuccessBrush" Color="#1E8E5A" />
+          <SolidColorBrush x:Key="CoursePendingForeground" Color="#4B3FB5" />
+          <SolidColorBrush x:Key="CourseSuccessBackground" Color="#E6F4EC" />
+          <SolidColorBrush x:Key="CourseWarningBackground" Color="#FDF3DC" />
+          <SolidColorBrush x:Key="CourseNeutralBackground" Color="#F6F4F1" />
+          <SolidColorBrush x:Key="WarningBrush" Color="#B7791F" />
+          <BoxShadows x:Key="CardShadow">0 1 2 0 #0D1F1D2B, 0 4 16 0 #0A1F1D2B</BoxShadows>
+        <SolidColorBrush x:Key="SidebarBrush" Color="#FAF9F6" />
+<SolidColorBrush x:Key="DividerBrush" Color="#EFECE6" />
+<SolidColorBrush x:Key="PlaceholderBrush" Color="#9A97A5" />
+<SolidColorBrush x:Key="PrimaryHoverBrush" Color="#4F44B8" />
+<SolidColorBrush x:Key="PrimaryPressedBrush" Color="#4338A3" />
+<SolidColorBrush x:Key="DangerTonalBrush" Color="#FCEBEB" />
+<SolidColorBrush x:Key="DangerBorderBrush" Color="#F2C5C5" />
+<SolidColorBrush x:Key="NowLineBrush" Color="#E5484D" />
+<SolidColorBrush x:Key="ScrollThumbBrush" Color="#D6D2CA" />
+<SolidColorBrush x:Key="SwitchOffBrush" Color="#C9C5D6" />
+<SolidColorBrush x:Key="FocusBrush" Color="#665B4FCF" />
+<SolidColorBrush x:Key="Course0Brush" Color="#2F9E78"/><SolidColorBrush x:Key="Course0TintBrush" Color="#E8F5F0"/>
+<SolidColorBrush x:Key="Course1Brush" Color="#7C6BE0"/><SolidColorBrush x:Key="Course1TintBrush" Color="#EFECFB"/>
+<SolidColorBrush x:Key="Course2Brush" Color="#3B82C4"/><SolidColorBrush x:Key="Course2TintBrush" Color="#E7F0FA"/>
+<SolidColorBrush x:Key="Course3Brush" Color="#E08A3C"/><SolidColorBrush x:Key="Course3TintBrush" Color="#FBF0E4"/>
+<SolidColorBrush x:Key="Course4Brush" Color="#D6568A"/><SolidColorBrush x:Key="Course4TintBrush" Color="#FBE9F1"/>
+<SolidColorBrush x:Key="Course5Brush" Color="#1F9FB0"/><SolidColorBrush x:Key="Course5TintBrush" Color="#E5F5F7"/>
+<SolidColorBrush x:Key="Course6Brush" Color="#C49A1A"/><SolidColorBrush x:Key="Course6TintBrush" Color="#FAF3DC"/>
+<SolidColorBrush x:Key="Course7Brush" Color="#6B7A99"/><SolidColorBrush x:Key="Course7TintBrush" Color="#EDF0F5"/>
+<SolidColorBrush x:Key="AccentBrush" Color="#5B4FCF"/>
+<SolidColorBrush x:Key="AccentSoftBrush" Color="#ECE9FB"/>
+<SolidColorBrush x:Key="AccentFaintBrush" Color="#ECE9FB"/>
+<SolidColorBrush x:Key="AccentStrongBrush" Color="#4B3FB5"/>
+<SolidColorBrush x:Key="OnAccentBrush" Color="#FFFFFF"/>
+</ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+          <SolidColorBrush x:Key="PageBrush" Color="#1D1929" />
+          <SolidColorBrush x:Key="SurfaceBrush" Color="#282336" />
+          <SolidColorBrush x:Key="SurfaceAltBrush" Color="#332C44" />
+          <SolidColorBrush x:Key="SubtleBorderBrush" Color="#1CFFFFFF" />
+          <SolidColorBrush x:Key="TableHeaderBrush" Color="#30293F" />
+          <SolidColorBrush x:Key="TextPrimaryBrush" Color="#F3EFFA" />
+          <SolidColorBrush x:Key="TextSecondaryBrush" Color="#B9B0CB" />
+          <SolidColorBrush x:Key="DangerBrush" Color="#F09595" />
+          <SolidColorBrush x:Key="SuccessBrush" Color="#5DCAA5" />
+          <SolidColorBrush x:Key="CoursePendingForeground" Color="#BDB6FF" />
+          <SolidColorBrush x:Key="CourseSuccessBackground" Color="#203C32" />
+          <SolidColorBrush x:Key="CourseWarningBackground" Color="#403322" />
+          <SolidColorBrush x:Key="CourseNeutralBackground" Color="#332C44" />
+          <SolidColorBrush x:Key="WarningBrush" Color="#EF9F27" />
+          <BoxShadows x:Key="CardShadow">0 1 3 0 #40000000, 0 8 24 0 #33000000</BoxShadows>
+        <SolidColorBrush x:Key="SidebarBrush" Color="#241E32" />
+<SolidColorBrush x:Key="DividerBrush" Color="#393643" />
+<SolidColorBrush x:Key="PlaceholderBrush" Color="#ABA6B9" />
+<SolidColorBrush x:Key="PrimaryHoverBrush" Color="#7468E0" />
+<SolidColorBrush x:Key="PrimaryPressedBrush" Color="#5B4FCF" />
+<SolidColorBrush x:Key="DangerTonalBrush" Color="#492A32" />
+<SolidColorBrush x:Key="DangerBorderBrush" Color="#95515E" />
+<SolidColorBrush x:Key="NowLineBrush" Color="#FF7478" />
+<SolidColorBrush x:Key="ScrollThumbBrush" Color="#777182" />
+<SolidColorBrush x:Key="SwitchOffBrush" Color="#716B80" />
+<SolidColorBrush x:Key="FocusBrush" Color="#669E93F3" />
+<SolidColorBrush x:Key="Course0Brush" Color="#2F9E78"/><SolidColorBrush x:Key="Course0TintBrush" Color="#233D35"/>
+<SolidColorBrush x:Key="Course1Brush" Color="#7C6BE0"/><SolidColorBrush x:Key="Course1TintBrush" Color="#34304B"/>
+<SolidColorBrush x:Key="Course2Brush" Color="#3B82C4"/><SolidColorBrush x:Key="Course2TintBrush" Color="#26394D"/>
+<SolidColorBrush x:Key="Course3Brush" Color="#E08A3C"/><SolidColorBrush x:Key="Course3TintBrush" Color="#473626"/>
+<SolidColorBrush x:Key="Course4Brush" Color="#D6568A"/><SolidColorBrush x:Key="Course4TintBrush" Color="#472E3C"/>
+<SolidColorBrush x:Key="Course5Brush" Color="#1F9FB0"/><SolidColorBrush x:Key="Course5TintBrush" Color="#243F43"/>
+<SolidColorBrush x:Key="Course6Brush" Color="#C49A1A"/><SolidColorBrush x:Key="Course6TintBrush" Color="#423C26"/>
+<SolidColorBrush x:Key="Course7Brush" Color="#6B7A99"/><SolidColorBrush x:Key="Course7TintBrush" Color="#303848"/>
+<SolidColorBrush x:Key="AccentBrush" Color="#A99BFF"/>
+<SolidColorBrush x:Key="AccentSoftBrush" Color="#39334F"/>
+<SolidColorBrush x:Key="AccentFaintBrush" Color="#302B42"/>
+<SolidColorBrush x:Key="AccentStrongBrush" Color="#C6BCFF"/>
+<SolidColorBrush x:Key="OnAccentBrush" Color="#211B38"/>
+</ResourceDictionary>
+      </ResourceDictionary.ThemeDictionaries>
+
+      <!-- Defaults; ThemeService overwrites these at startup. -->
+      <CornerRadius x:Key="SoftRadius">16</CornerRadius>
+      <CornerRadius x:Key="SoftRadiusSmall">8</CornerRadius>
+      <CornerRadius x:Key="SoftRadiusLarge">12</CornerRadius>
+      <FontFamily x:Key="AppFontFamily">HarmonyOS Sans SC, MiSans, Microsoft YaHei UI, Segoe UI</FontFamily>
+
+      <!-- Springy easing used by press/hover transitions ("말랑말랑"). -->
+      <BackEaseOut x:Key="SoftEase" />
+
+</ResourceDictionary>
+

@@ -1,0 +1,252 @@
+<!--
+  Filee "soft" look: rounded corners, gentle surfaces, springy press feedback.
+  Colours that depend on light/dark live in ThemeDictionaries below; the accent colour, corner radii and
+  the UI font are written at runtime by ThemeService (so users can customise them).
+-->
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:motion="using:PressureMap.Services">
+
+  <!-- ───────── Windows & typography ───────── -->
+  <Style Selector="Window">
+    <Setter Property="Background" Value="{DynamicResource PageBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}" />
+    <Setter Property="FontFamily" Value="{DynamicResource AppFontFamily}" />
+    <Setter Property="FontSize" Value="14" />
+  </Style>
+
+  <Style Selector="TextBlock.h1">
+    <Setter Property="FontSize" Value="26" />
+    <Setter Property="FontWeight" Value="Bold" />
+  </Style>
+  <Style Selector="TextBlock.h2">
+    <Setter Property="FontSize" Value="17" />
+    <Setter Property="FontWeight" Value="Bold" />
+  </Style>
+  <Style Selector="TextBlock.muted">
+    <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}" />
+  </Style>
+  <Style Selector="TextBlock.caption">
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}" />
+  </Style>
+  <Style Selector="TextBlock.label">
+    <Setter Property="FontSize" Value="13" />
+    <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}" />
+    <Setter Property="Margin" Value="0,0,0,4" />
+  </Style>
+  <Style Selector="TextBlock.danger">
+    <Setter Property="Foreground" Value="{DynamicResource DangerBrush}" />
+  </Style>
+
+  <!-- ───────── Cards ───────── -->
+  <Style Selector="Border.today-divider">
+    <Setter Property="Background" Value="{DynamicResource SubtleBorderBrush}" />
+  </Style>
+  <Style Selector="Border.card">
+    <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SubtleBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource SoftRadius}" />
+    <Setter Property="Padding" Value="24" />
+    <Setter Property="BoxShadow" Value="{DynamicResource CardShadow}" />
+  </Style>
+
+  <Style Selector="Border.chip">
+    <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SubtleBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="999" />
+    <Setter Property="Padding" Value="10,5" />
+    <Setter Property="Margin" Value="3" />
+    <Setter Property="Cursor" Value="SizeAll" />
+    <Setter Property="RenderTransform" Value="none" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.25" Easing="{DynamicResource SoftEase}" />
+        <BrushTransition Property="Background" Duration="0:0:0.15" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="Border.chip:pointerover">
+    <Setter Property="Background" Value="{DynamicResource AccentFaintBrush}" />
+    <Setter Property="RenderTransform" Value="none" />
+  </Style>
+
+  <!-- Badge for engine status etc. -->
+  <Style Selector="Border.badge">
+    <Setter Property="CornerRadius" Value="999" />
+    <Setter Property="Padding" Value="8,2" />
+    <Setter Property="Background" Value="{DynamicResource SurfaceAltBrush}" />
+  </Style>
+  <Style Selector="Border.badge.ok">
+    <Setter Property="Background" Value="{DynamicResource AccentFaintBrush}" />
+  </Style>
+
+  <!-- ───────── Buttons: soft corners and a springy press ───────── -->
+  <Style Selector="Button, ToggleButton, RepeatButton">
+    <Setter Property="CornerRadius" Value="{DynamicResource SoftRadiusSmall}" />
+    <Setter Property="Padding" Value="14,7" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.22" Easing="{DynamicResource SoftEase}" />
+      </Transitions>
+    </Setter>
+  </Style>
+  <Style Selector="Button:pressed, ToggleButton:pressed">
+    <Setter Property="RenderTransform" Value="none" />
+  </Style>
+  <Style Selector="Button.ghost">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+  <!-- Small links at the bottom of the navigation (GitHub, Sponsor) -->
+  <Style Selector="Button.navlink">
+    <Setter Property="Padding" Value="8,6" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Background" Value="{DynamicResource SurfaceAltBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+  <Style Selector="Button.icon">
+    <Setter Property="Padding" Value="8" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+
+  <Style Selector="ProgressBar.soft">
+    <Setter Property="CornerRadius" Value="999" />
+    <Setter Property="MinHeight" Value="6" />
+    <Setter Property="Height" Value="6" />
+  </Style>
+
+  <!-- ───────── Filter chips: white outlines when idle, one solid accent when chosen ───────── -->
+  <Style Selector="Button.segment">
+    <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SubtleBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Padding" Value="15,5" />
+    <Setter Property="FontSize" Value="13" />
+    <Setter Property="MinHeight" Value="30" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Button.segment:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource AccentFaintBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource AccentSoftBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}" />
+  </Style>
+  <Style Selector="Button.segment.accent">
+    <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource OnAccentBrush}" />
+  </Style>
+  <Style Selector="Button.segment.accent:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource AccentStrongBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource AccentStrongBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource OnAccentBrush}" />
+  </Style>
+
+  <Style Selector="TextBox, ComboBox, NumericUpDown">
+    <Setter Property="CornerRadius" Value="{DynamicResource SoftRadiusSmall}" />
+  </Style>
+
+  <!-- ───────── Navigation list ───────── -->
+  <Style Selector="ListBox.nav">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Padding" Value="0" />
+  </Style>
+  <!-- PCL2 keeps the hover surface separate from the selected surface and text. -->
+  <Style Selector="ListBox.nav ListBoxItem">
+    <Setter Property="motion:NavigationMotion.Enabled" Value="True" />
+    <Setter Property="CornerRadius" Value="10" />
+    <Setter Property="Padding" Value="12,9" />
+    <Setter Property="Margin" Value="0,1" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid x:Name="NavMotionRoot" Background="Transparent" RenderTransformOrigin="50%,50%" RenderTransform="translateY(0px) scale(1)">
+          <Border x:Name="NavSelection" Background="{DynamicResource AccentSoftBrush}" CornerRadius="10" Opacity="0" IsHitTestVisible="False" />
+          <Border x:Name="NavHover" Background="{DynamicResource AccentFaintBrush}" CornerRadius="10" Opacity="0" RenderTransform="scale(0.75)" RenderTransformOrigin="50%,50%" IsHitTestVisible="False" />
+          <ContentPresenter x:Name="PART_ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" CornerRadius="10" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="{TemplateBinding Foreground}" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem:pointerover, ListBox.nav ListBoxItem:selected, ListBox.nav ListBoxItem:selected:pointerover, ListBox.nav ListBoxItem:pressed, ListBox.nav ListBoxItem:selected:pressed">
+    <Setter Property="CornerRadius" Value="10" />
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem /template/ Grid#NavMotionRoot">
+    <Setter Property="Transitions"><Transitions><TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.144" Easing="CubicEaseOut" /></Transitions></Setter>
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem:pointerover /template/ Grid#NavMotionRoot">
+    <Setter Property="RenderTransform" Value="translateY(-1px) scale(1.015)" />
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem.nav-pressed /template/ Grid#NavMotionRoot">
+    <Setter Property="RenderTransform" Value="translateY(0px) scale(0.98)" />
+    <Setter Property="Transitions"><Transitions><TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.108" Easing="CubicEaseOut" /></Transitions></Setter>
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem /template/ Border#NavHover">
+    <Setter Property="Transitions"><Transitions>
+      <DoubleTransition Property="Opacity" Duration="0:0:0.18" />
+      <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.001" Delay="0:0:0.18" />
+    </Transitions></Setter>
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem:pointerover /template/ Border#NavHover">
+    <Setter Property="Opacity" Value="1" />
+    <Setter Property="BoxShadow" Value="0 3 10 0 #12594BD9" />
+    <Setter Property="RenderTransform" Value="scale(1)" />
+    <Setter Property="Transitions"><Transitions>
+      <DoubleTransition Property="Opacity" Duration="0:0:0.12" Easing="CubicEaseOut" />
+      <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.192" Easing="CubicEaseOut" />
+    </Transitions></Setter>
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem:selected /template/ Border#NavSelection">
+    <Setter Property="Opacity" Value="1" />
+  </Style>
+  <!-- Fluent state brushes must never cover the independent animated surfaces. -->
+  <Style Selector="ListBox.nav ListBoxItem /template/ ContentPresenter#PART_ContentPresenter, ListBox.nav ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter, ListBox.nav ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter, ListBox.nav ListBoxItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter, ListBox.nav ListBoxItem:pressed /template/ ContentPresenter#PART_ContentPresenter, ListBox.nav ListBoxItem:selected:pressed /template/ ContentPresenter#PART_ContentPresenter, ListBox.nav ListBoxItem.nav-pressed /template/ ContentPresenter#PART_ContentPresenter, ListBox.nav ListBoxItem:selected.nav-pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter, ListBox.nav ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Foreground" Value="{DynamicResource AccentStrongBrush}" />
+  </Style>
+  <Style Selector="ListBox.nav ListBoxItem:focus-visible /template/ Border#NavSelection">
+    <Setter Property="BorderBrush" Value="{DynamicResource FocusBrush}" />
+    <Setter Property="BorderThickness" Value="2" />
+    <Setter Property="Opacity" Value="1" />
+  </Style>
+  <Style Selector="Window.reduced-motion ListBox.nav ListBoxItem /template/ Border#NavHover, Window.reduced-motion ListBox.nav ListBoxItem /template/ Grid#NavMotionRoot">
+    <Setter Property="Transitions" Value="{x:Null}" />
+  </Style>
+  <Style Selector="Window.reduced-motion ListBox.nav ListBoxItem:pointerover /template/ Border#NavHover">
+    <Setter Property="BoxShadow" Value="none" />
+  </Style>
+  <Style Selector="Window.reduced-motion ListBox.nav ListBoxItem:pointerover /template/ Grid#NavMotionRoot, Window.reduced-motion ListBox.nav ListBoxItem.nav-pressed /template/ Grid#NavMotionRoot">
+    <Setter Property="RenderTransform" Value="translateY(0px) scale(1)" />
+  </Style>
+
+  <!-- Generic rounded list items (profiles, presets) -->
+  <Style Selector="ListBox.soft">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+  <Style Selector="ListBox.soft ListBoxItem">
+    <Setter Property="CornerRadius" Value="{DynamicResource SoftRadiusSmall}" />
+    <Setter Property="Padding" Value="10,7" />
+    <Setter Property="Margin" Value="0,1" />
+  </Style>
+  <Style Selector="ListBox.soft ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource AccentSoftBrush}" />
+  </Style>
+
+  <!-- ───────── Reduced motion: remove every transition and animation above ───────── -->
+  <Style Selector="Window.reduced-motion :is(Button), Window.reduced-motion :is(ToggleButton), Window.reduced-motion Border.chip, Window.reduced-motion ListBoxItem">
+    <Setter Property="Transitions" Value="{x:Null}" />
+  </Style>
+  <Style Selector="Window.reduced-motion Button:pressed, Window.reduced-motion ToggleButton:pressed, Window.reduced-motion Border.chip:pointerover, Window.reduced-motion ListBox.nav ListBoxItem:pointerover">
+    <Setter Property="RenderTransform" Value="none" />
+  </Style>
+</Styles>

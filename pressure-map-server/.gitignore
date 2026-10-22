@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+data/
+.test-temp/
+test-results/
+.env
+*.db
+*.db-shm
+*.db-wal
+*.pfx
+dist/

@@ -1,0 +1,23 @@
+:443 {
+    encode zstd gzip
+    tls /etc/caddy/certs/server.crt /etc/caddy/certs/server.key
+    handle_path /api/* {
+        reverse_proxy api:8080
+    }
+    handle {
+        root * /srv/pressure-map-website/current
+        file_server
+    }
+}
+
+:80 {
+    encode zstd gzip
+    @api path /api /api/*
+    handle @api {
+        redir https://{host}{uri} permanent
+    }
+    handle {
+        root * /srv/pressure-map-website/current
+        file_server
+    }
+}

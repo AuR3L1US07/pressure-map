@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../../src/PressureMap.Core/PressureMap.Core.csproj" /></ItemGroup>
+  <ItemGroup><Content Include="../fixtures/*" Link="fixtures/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><Compile Include="../../src/PressureMap.App/Services/Preferences.cs" Link="Preferences.cs" /></ItemGroup>
+  <ItemGroup><Compile Include="../../src/PressureMap.App/Services/LocalCache.cs" Link="LocalCache.cs" /></ItemGroup>
+<ItemGroup><Compile Include="../../src/PressureMap.App/Services/WindowsSecret.cs" Link="WindowsSecret.cs" /><Compile Include="../../src/PressureMap.App/Services/CloudSessionCache.cs" Link="CloudSessionCache.cs" /></ItemGroup></Project>

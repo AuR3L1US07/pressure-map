@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>PressureMap</AssemblyName>
+    <RootNamespace>PressureMap</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+    <ApplicationIcon>../../assets/app.ico</ApplicationIcon>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.1.3" />
+    <PackageReference Include="Avalonia.Desktop" Version="12.1.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.3" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.1.2" />
+    <ProjectReference Include="../PressureMap.Core/PressureMap.Core.csproj" />
+    <Content Include="OnlineCourses\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <AvaloniaResource Include="../../assets/app.ico" Link="Assets/app.ico" />
+    <AvaloniaResource Include="../../assets/default-avatar.png" Link="Assets/default-avatar.png" />
+  </ItemGroup>
+  <Target Name="RemoveNativeDebugSymbols" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release'">
+    <ItemGroup><NativeDebugSymbols Include="$(PublishDir)*.pdb" /></ItemGroup>
+    <Delete Files="@(NativeDebugSymbols)" />
+  </Target>
+</Project>
+

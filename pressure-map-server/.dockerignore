@@ -1,0 +1,8 @@
+**/bin
+**/obj
+.test-temp
+.git
+data
+.env
+*.db
+*.pfx

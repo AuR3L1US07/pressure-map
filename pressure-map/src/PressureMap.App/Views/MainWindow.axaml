@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui" xmlns:chrome="clr-namespace:Avalonia.Controls.Chrome;assembly=Avalonia.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="PressureMap.Views.MainWindow"
+        Title="学期地图" Width="1180" Height="780" MaxWidth="1280" MaxHeight="820" MinWidth="960" MinHeight="640" CanMaximize="False" WindowDecorations="BorderOnly" ExtendClientAreaToDecorationsHint="True" ExtendClientAreaTitleBarHeightHint="40" WindowStartupLocation="CenterScreen" Icon="avares://PressureMap/Assets/app.ico">
+  <Grid x:Name="WindowShell" RowDefinitions="40,*" ColumnDefinitions="230,*" RenderTransformOrigin="50%,50%">
+    <Border Grid.Column="1" Background="{DynamicResource PageBrush}" chrome:WindowDecorationProperties.ElementRole="TitleBar">
+      <Grid Margin="0,0,8,0">
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Spacing="2" VerticalAlignment="Center">
+          <Button x:Name="MinimizeButton" Classes="caption-button" AutomationProperties.Name="最小化" ToolTip.Tip="最小化" Click="MinimizeWindow" chrome:WindowDecorationProperties.ElementRole="MinimizeButton"><Path Data="M 4,12 L 18,12"/></Button>
+          <Button x:Name="MaximizeButton" IsVisible="False" Classes="caption-button" AutomationProperties.Name="最大化" ToolTip.Tip="最大化" Click="ToggleMaximize" chrome:WindowDecorationProperties.ElementRole="MaximizeButton"><Path x:Name="MaximizeGlyph" Data="M 5,5 L 17,5 L 17,17 L 5,17 Z"/></Button>
+          <Button x:Name="CloseButton" Classes="caption-button caption-close" AutomationProperties.Name="关闭" ToolTip.Tip="关闭" Click="CloseWindow" chrome:WindowDecorationProperties.ElementRole="CloseButton"><Path Data="M 5,5 L 17,17 M 17,5 L 5,17"/></Button>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <Border Grid.RowSpan="2" Background="{DynamicResource SidebarBrush}" BorderBrush="{DynamicResource SubtleBorderBrush}" BorderThickness="0,0,1,0">
+      <DockPanel Margin="14,18">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="10" Margin="8,0,0,20">
+          <PathIcon Width="28" Height="28" Data="{StaticResource Icon.Donut}" Foreground="{DynamicResource AccentBrush}"/>
+          <StackPanel><TextBlock x:Name="BrandTitle" Text="学期地图" FontSize="18" FontWeight="Bold"/><TextBlock x:Name="BrandSubtitle" Classes="caption" Text="规划学期，安排每一天。"/></StackPanel>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Spacing="8" Margin="4,12,4,0">
+          <Button x:Name="AccountButton" Classes="account" HorizontalAlignment="Stretch" ToolTip.Tip="账号与云同步">
+            <Grid ColumnDefinitions="36,12,*">
+              <Grid Width="36" Height="36" VerticalAlignment="Center">
+                <Image x:Name="AccountAvatar" Width="36" Height="36" Source="avares://PressureMap/Assets/default-avatar.png" Stretch="Uniform"/>
+                <Border x:Name="AccountInitialChip" IsVisible="False" CornerRadius="14" Background="{DynamicResource AccentBrush}">
+                  <TextBlock x:Name="AccountInitial" Text="本" FontSize="12" FontWeight="Bold" Foreground="{DynamicResource OnAccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="NoWrap"/>
+                </Border>
+              </Grid>
+              <StackPanel Grid.Column="2" Spacing="2"><TextBlock x:Name="AccountName" VerticalAlignment="Center" Text="本地模式" FontSize="14" FontWeight="Medium" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/><TextBlock x:Name="AccountSubtitle" Classes="caption" Text="未登录 · 点击登录"/></StackPanel>
+            </Grid>
+          </Button>
+          <TextBlock Classes="caption" Text="v2.0.0" />
+        </StackPanel>
+        <ListBox x:Name="Navigation" Classes="nav" />
+      </DockPanel>
+    </Border>
+    <Grid Grid.Column="1" Grid.Row="1" RowDefinitions="Auto,*">
+      <Border x:Name="ErrorBanner" IsVisible="False" Background="#FFF0EC" Padding="14,8" Margin="32,12,32,0" CornerRadius="10">
+        <DockPanel><Button x:Name="ErrorClose" DockPanel.Dock="Right" Content="关闭" Classes="link" Click="DismissError"/><TextBlock x:Name="ErrorText" Classes="danger" VerticalAlignment="Center"/></DockPanel>
+      </Border>
+      <ContentControl Grid.Row="1" x:Name="PageHost" Classes="page" Margin="32,28,32,0" MaxWidth="1200" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" />
+    </Grid>
+  </Grid>
+</Window>

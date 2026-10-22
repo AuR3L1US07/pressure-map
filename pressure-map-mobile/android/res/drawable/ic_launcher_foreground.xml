@@ -1,0 +1,33 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 压力环 -->
+    <path
+        android:pathData="M54,32 a22,22 0 1 1 -0.01,0"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFF"
+        android:strokeAlpha="0.3"
+        android:strokeWidth="5" />
+
+    <!-- 压力环高亮弧 -->
+    <path
+        android:pathData="M54,32 A22,22 0 0 1 72.2,66.3"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round" />
+
+    <!-- 三根柱状 -->
+    <path
+        android:pathData="M42.3,65.3 a1.8,1.8 0 0 1 1.8,-1.8 h1.4 a1.8,1.8 0 0 1 1.8,1.8 v5.4 a1.8,1.8 0 0 1 -1.8,1.8 h-1.4 a1.8,1.8 0 0 1 -1.8,-1.8 z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M51.5,59.3 a1.8,1.8 0 0 1 1.8,-1.8 h1.4 a1.8,1.8 0 0 1 1.8,1.8 v11.4 a1.8,1.8 0 0 1 -1.8,1.8 h-1.4 a1.8,1.8 0 0 1 -1.8,-1.8 z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M60.7,52.8 a1.8,1.8 0 0 1 1.8,-1.8 h1.4 a1.8,1.8 0 0 1 1.8,1.8 v17.9 a1.8,1.8 0 0 1 -1.8,1.8 h-1.4 a1.8,1.8 0 0 1 -1.8,-1.8 z"
+        android:fillColor="#FFFFFF" />
+</vector>

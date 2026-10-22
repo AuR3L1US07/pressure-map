@@ -1,0 +1,38 @@
+﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="DataGrid.course-table">
+    <Style.Resources>
+      <SolidColorBrush x:Key="DataGridRowHoveredBackgroundColor" Color="#0E7F77DD" />
+      <SolidColorBrush x:Key="DataGridRowSelectedBackgroundBrush" Color="#7F77DD" />
+      <SolidColorBrush x:Key="DataGridRowSelectedHoveredBackgroundBrush" Color="#7F77DD" />
+      <SolidColorBrush x:Key="DataGridRowSelectedUnfocusedBackgroundBrush" Color="#7F77DD" />
+      <SolidColorBrush x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundBrush" Color="#7F77DD" />
+      <x:Double x:Key="DataGridRowSelectedBackgroundOpacity">0.10</x:Double>
+      <x:Double x:Key="DataGridRowSelectedHoveredBackgroundOpacity">0.14</x:Double>
+      <x:Double x:Key="DataGridRowSelectedUnfocusedBackgroundOpacity">0.08</x:Double>
+      <x:Double x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundOpacity">0.12</x:Double>
+      <SolidColorBrush x:Key="DataGridCellFocusVisualPrimaryBrush" Color="#807F77DD" />
+      <SolidColorBrush x:Key="DataGridCellFocusVisualSecondaryBrush" Color="Transparent" />
+      <!-- The header keeps one flat band: hovering a sortable header must not repaint a whole pane. -->
+      <x:Double x:Key="DataGridSortIconMinWidth">0</x:Double>
+      <SolidColorBrush x:Key="DataGridColumnHeaderHoveredBackgroundBrush" Color="Transparent" />
+      <SolidColorBrush x:Key="DataGridColumnHeaderPressedBackgroundBrush" Color="Transparent" />
+    </Style.Resources>
+    <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}" />
+  </Style>
+  <!-- Header: a quiet band, labels sit on the same insets as the cells below. -->
+  <Style Selector="DataGrid.course-table DataGridColumnHeader">
+    <Setter Property="Background" Value="{DynamicResource TableHeaderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SubtleBorderBrush}" />
+    <Setter Property="BorderThickness" Value="0,0,0,1" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="MinHeight" Value="40" />
+    <Setter Property="AreSeparatorsVisible" Value="False" />
+  </Style>
+  <Style Selector="DataGrid.course-table DataGridCell">
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+</Styles>

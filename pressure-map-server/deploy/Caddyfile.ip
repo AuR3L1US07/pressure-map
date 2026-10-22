@@ -1,0 +1,18 @@
+# IP-only mode: without a domain no public CA can issue a certificate.
+# Caddy serves the self-signed cert in deploy/certs/, so clients must trust
+# deploy/certs/server.crt before connecting over HTTPS.
+# Switch back to deploy/Caddyfile once a domain points at this server.
+:443 {
+	encode zstd gzip
+	tls /etc/caddy/certs/server.crt /etc/caddy/certs/server.key
+	handle_path /api/* {
+		reverse_proxy api:8080
+	}
+	handle {
+		respond "Pressure Map cloud API" 200
+	}
+}
+
+:80 {
+	redir https://{host}{uri} permanent
+}

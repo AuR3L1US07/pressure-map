@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>WinExe</OutputType></PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" Version="12.1.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.3" />
+    <Compile Include="../../src/PressureMap.App/Services/DesktopNative.cs" Link="DesktopNative.cs" />
+    <Compile Include="../../src/PressureMap.App/Services/NativeCapture.cs" Link="NativeCapture.cs" />
+  </ItemGroup>
+</Project>

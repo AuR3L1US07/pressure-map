@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/PressureMap.Core/PressureMap.Core.csproj" />
+  <Project Path="src/PressureMap.App/PressureMap.App.csproj" />
+  <Project Path="tests/PressureMap.Checks/PressureMap.Checks.csproj" />
+</Solution>

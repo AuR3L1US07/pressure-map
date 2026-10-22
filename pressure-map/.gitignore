@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+dist/
+build/
+.venv/
+__pycache__/
+*.pyc
+*.db
+secret.key
+test-results/
+.test-temp/
+.release-stage/
+.migration-source/
+output/installer/
+output/*.zip

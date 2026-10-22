@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "pages": 9,
+  "planner_steps": 4,
+  "login_skip_and_failure": true,
+  "navigation_save_guard": true,
+  "todo_add": true,
+  "integrated_chrome": true,
+  "page_motion": true,
+  "reduced_motion": true,
+  "student_workflow": {
+    "reminder_poll_dedup": true,
+    "course_task": true,
+    "subtasks": true,
+    "precise_deadline": true,
+    "submission_action": true,
+    "pressure_before": 62,
+    "pressure_after": 49,
+    "reminder_snooze": true,
+    "desktop_layer": {
+      "host": 65962,
+      "owner": 65962,
+      "toolwindow": true,
+      "appwindow": false,
+      "topmost": false,
+      "bedded": true,
+      "minimize_recovery": true,
+      "owner_recovery": true
+    }
+  },
+  "calendar": {
+    "imported": true,
+    "cancel_safe": true,
+    "today_courses": 2,
+    "tomorrow_courses": 4,
+    "empty_day": true,
+    "independent_widgets": true,
+    "layer": {
+      "host": 65962,
+      "owner": 65962,
+      "toolwindow": true,
+      "appwindow": false,
+      "topmost": false,
+      "bedded": true,
+      "minimize_recovery": true,
+      "owner_recovery": true
+    }
+  },
+  "glass": {
+    "requested": true,
+    "actual": "AcrylicBlur",
+    "native_blur": true,
+    "tint": 0.48,
+    "foreground_opacity": 1,
+    "window_opacity": 1
+  },
+  "desktop": {
+    "host": 65962,
+    "owner": 65962,
+    "toolwindow": true,
+    "appwindow": false,
+    "topmost": false,
+    "bedded": true,
+    "minimize_recovery": true,
+    "owner_recovery": true
+  }
+}

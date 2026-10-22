@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#f8f7fb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="压力地图">
+<meta name="format-detection" content="telephone=no">
+<title>学期压力地图</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <!-- 几何全部取自桌面端 Views/IconView.cs 与 Styles/Icons.axaml，两端图形一致 -->
+  <symbol id="i-today" viewBox="0 0 24 24"><path d="M3 10L12 3 21 10M5 9V21H10V14H14V21H19V9"/></symbol>
+  <symbol id="i-todo" viewBox="0 0 24 24"><path d="M3 6L5 8 8 4M11 6H21M3 14L5 16 8 12M11 14H21M11 21H21"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M4 5H20V21H4ZM4 10H20M8 3V7M16 3V7M8 14H10M14 14H16M8 18H10"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M12 3A9 9 0 1 1 12 21A9 9 0 1 1 12 3M12 8.5A3.5 3.5 0 1 1 12 15.5A3.5 3.5 0 1 1 12 8.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.4L10 17.4L19 7"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="M8.25 5.505L9.682 4.867L9.921 2.219L14.079 2.219L14.318 4.867L15.75 5.505L17.018 6.426L19.431 5.309L21.511 8.91L19.336 10.441L19.5 12L19.336 13.559L21.511 15.09L19.431 18.691L17.018 17.574L15.75 18.495L14.318 19.133L14.079 21.781L9.921 21.781L9.682 19.133L8.25 18.495L6.982 17.574L4.569 18.691L2.489 15.09L4.664 13.559L4.5 12L4.664 10.441L2.489 8.91L4.569 5.309L6.982 6.426ZM15.25 12A3.25 3.25 0 1 1 8.75 12A3.25 3.25 0 1 1 15.25 12"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4V20M4 12H20"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 5L16 12 9 19"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6H21M9 6V3H15V6M6 6L7 21H17L18 6M10 10V17M14 10V17"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><path d="M21 12A9 9 0 1 1 3 12A9 9 0 1 1 21 12M12 6V12L16 14"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M12 3L15 9 22 10 17 15 18 22 12 18 6 22 7 15 2 10 9 9Z"/></symbol>
+  <symbol id="i-empty" viewBox="0 0 24 24"><path d="M3 4H21V20H3ZM3 9H21"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 5L9 3 15 5 21 3V19L15 21 9 19 3 21ZM9 3V19M15 5V21"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><path d="M3 4H21V17H3ZM8 21H16M12 17V21M10 8L15 11 10 14Z"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><path d="M3 6C3 2 21 2 21 6C21 10 3 10 3 6V18C3 22 21 22 21 18V6M3 12C3 16 21 16 21 12"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6H10L12 9H21V21H3Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M18.5 5.5l-1.7 1.7M7.2 16.8L5.5 18.5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.2 8.2 0 1 0 20 14.2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.2-5.8 6.2-10.2A6.2 6.2 0 0 0 5.8 10.8C5.8 15.2 12 21 12 21z"/><circle cx="12" cy="10.6" r="2.2"/></symbol>
+</svg>
+
+<div class="app">
+  <header class="topbar">
+    <!-- 与桌面端侧栏左上角的品牌圆环同一个几何（Styles/Icons.axaml Icon.Donut） -->
+    <svg class="brand-ring" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill-rule="evenodd" d="M12 2A10 10 0 1 1 12 22A10 10 0 1 1 12 2ZM12 8A4 4 0 1 0 12 16A4 4 0 1 0 12 8Z"/>
+    </svg>
+    <div class="topbar-text">
+      <h1 id="barTitle">学期压力地图</h1>
+      <p id="barSub">第 1 周 · 周一</p>
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切换主题">
+        <svg class="ico" id="themeIcon"><use href="#i-sun"></use></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 今日 -->
+    <section class="view" id="view-today" data-view="today">
+      <div class="hero-card" id="heroCard">
+        <div class="hero-head">
+          <div>
+            <p class="hero-eyebrow" id="heroEyebrow">本周压力</p>
+            <p class="hero-title" id="heroTitle">正常</p>
+            <p class="hero-note" id="heroNote">还有 3 个任务没做完</p>
+          </div>
+          <div class="ring" id="ringWrap">
+            <svg viewBox="0 0 100 100" class="ring-svg">
+              <circle class="ring-track" cx="50" cy="50" r="42"/>
+              <circle class="ring-value" id="ringValue" cx="50" cy="50" r="42"/>
+            </svg>
+            <div class="ring-label"><strong id="ringScore">0</strong><span id="ringUnit">压力值</span></div>
+          </div>
+        </div>
+        <div class="hero-stats" id="heroStats"></div>
+      </div>
+
+      <div class="section-head">
+        <h2>今日课程</h2>
+        <button class="text-btn" type="button" data-goto="calendar">整周课表</button>
+      </div>
+      <div class="stack" id="todayClasses"></div>
+
+      <div class="section-head">
+        <h2>今天要做</h2>
+        <button class="text-btn" type="button" data-goto="todos">全部待办</button>
+      </div>
+      <div class="stack" id="todayTodos"></div>
+
+      <div class="section-head">
+        <h2>最近截止</h2>
+      </div>
+      <div class="stack" id="upcomingTodos"></div>
+    </section>
+
+    <!-- 课表 -->
+    <section class="view" id="view-calendar" data-view="calendar" hidden>
+      <div class="week-strip" id="weekStrip"></div>
+      <div class="section-head">
+        <h2 id="dayTitle">周一</h2>
+        <button class="text-btn" type="button" id="addSlotBtn">导入课表</button>
+      </div>
+      <div class="stack" id="dayClasses"></div>
+      <div class="section-head">
+        <h2>课表来源</h2>
+      </div>
+      <div class="stack" id="calSources"></div>
+      <p class="hint">导入教务导出的 .ics / .csv 后按真实日期显示，调课、停课、单双周都能正确反映。</p>
+    </section>
+
+    <!-- 待办 -->
+    <section class="view" id="view-todos" data-view="todos" hidden>
+      <div class="segmented" id="todoFilters">
+        <button class="seg is-on" type="button" data-filter="open">未完成</button>
+        <button class="seg" type="button" data-filter="today">今天</button>
+        <button class="seg" type="button" data-filter="done">已完成</button>
+        <button class="seg" type="button" data-filter="all">全部</button>
+      </div>
+      <div class="stack" id="todoList"></div>
+      <p class="hint" id="todoHint"></p>
+    </section>
+
+    <!-- 压力 -->
+    <section class="view" id="view-pressure" data-view="pressure" hidden>
+      <div class="card chart-card">
+        <div class="card-head">
+          <h2>学期压力曲线</h2>
+          <span class="chip" id="thresholdChip">阈值 7</span>
+        </div>
+        <div class="chart-scroll">
+          <svg class="chart" id="pressureChart" viewBox="0 0 700 220" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="chart-legend">
+          <span><i class="dot ok"></i>正常</span>
+          <span><i class="dot warn"></i>预警</span>
+          <span><i class="dot hot"></i>红色预警</span>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h2>本周课程压力</h2>
+        <span class="chip" id="weekChip">第 1 周</span>
+      </div>
+      <div class="stack" id="coursePressure"></div>
+
+      <div class="section-head">
+        <h2>什么时候开始做</h2>
+      </div>
+      <div class="stack" id="plans"></div>
+      <p class="hint">按每周可用时间倒推：压力预警的周可用时间减半。</p>
+    </section>
+
+    <!-- AI 助手 -->
+    <section class="view" id="view-ai" data-view="ai" hidden>
+      <div class="card">
+        <div class="card-head"><h2>今天的情况</h2><span class="chip" id="aiSummary"></span></div>
+        <div class="stack" id="aiToday"></div>
+      </div>
+      <div class="card">
+        <div class="field">
+          <label for="aiNotes">补充要求（可选）</label>
+          <textarea id="aiNotes" rows="3" maxlength="2000" placeholder="例如：晚上 8 点后有空，优先完成实验报告"></textarea>
+        </div>
+        <div class="list-btns">
+          <button class="row-btn" type="button" id="aiGenerate">生成今日建议</button>
+        </div>
+        <p class="hint" id="aiStatus">生成时会把今天的课程时间、相关待办和补充要求发送到你配置的 AI 接口。</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>安排建议</h2></div>
+        <div class="advice" id="aiAdvice">生成后，这里会显示今天的安排建议。</div>
+      </div>
+    </section>
+
+    <!-- 设置 -->
+    <section class="view" id="view-settings" data-view="settings" hidden>
+      <div class="card">
+        <div class="card-head"><h2>学期管理</h2><span class="chip" id="semCount"></span></div>
+        <div class="field"><label for="semSelect">当前学期</label><select id="semSelect"></select></div>
+        <div class="list-btns">
+          <button class="row-btn" type="button" id="semNew">新建学期</button>
+          <button class="row-btn danger" type="button" id="semDel">删除当前学期</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>学期</h2><span class="chip" id="semChip"></span></div>
+        <div class="field"><label for="semName">学期名称</label><input id="semName" type="text" maxlength="40"></div>
+        <div class="field-row">
+          <div class="field"><label for="semWeeks">总周数</label><input id="semWeeks" type="number" min="1" max="30" inputmode="numeric"></div>
+          <div class="field"><label for="semThreshold">高压阈值</label><input id="semThreshold" type="number" min="1" max="30" step="0.5" inputmode="decimal"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="semHours">每周可用小时</label><input id="semHours" type="number" min="1" max="100" inputmode="decimal"></div>
+          <div class="field"><label for="semMonday">第 1 周周一</label><input id="semMonday" type="date"></div>
+        </div>
+        <p class="hint" id="semRule">课程与任务共 0 门 / 0 个</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>外观与语言</h2></div>
+        <div class="setting-line">
+          <span>主题</span>
+          <div class="segmented small" id="themeSeg">
+            <button class="seg" type="button" data-theme-opt="auto">跟随系统</button>
+            <button class="seg" type="button" data-theme-opt="light">浅色</button>
+            <button class="seg" type="button" data-theme-opt="dark">深色</button>
+          </div>
+        </div>
+        <div class="setting-line">
+          <span>课表起始日</span>
+          <div class="segmented small" id="weekStartSeg">
+            <button class="seg" type="button" data-week-start="1">周一</button>
+            <button class="seg" type="button" data-week-start="0">周日</button>
+          </div>
+        </div>
+        <div class="setting-line">
+          <span>界面语言</span>
+          <div class="segmented small" id="langSeg">
+            <button class="seg" type="button" data-lang-opt="zh" data-i18n-skip>中文</button>
+            <button class="seg" type="button" data-lang-opt="en">English</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>到点提醒</h2><span class="chip" id="remindChip">关闭</span></div>
+        <div class="setting-line">
+          <span>任务截止提醒</span>
+          <div class="segmented small" id="remindSeg">
+            <button class="seg" type="button" data-remind-opt="on">开启</button>
+            <button class="seg" type="button" data-remind-opt="off">关闭</button>
+          </div>
+        </div>
+        <div class="list-btns">
+          <button class="row-btn" type="button" id="remindTest">发一条测试提醒</button>
+        </div>
+        <p class="hint" id="remindHint">截止前 24 小时、1 小时和到期时各提醒一次；已完成但仍需提交的任务，会在到期时提醒提交。</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>云账号与同步</h2><span class="chip" id="cloudChip">未登录</span></div>
+        <div id="cloudBody"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>在线课程</h2><span class="chip" id="onlineChip">未同步</span></div>
+        <div class="list-btns">
+          <button class="row-btn" type="button" id="onlineChaoxing">读取超星学习通</button>
+          <button class="row-btn" type="button" id="onlineMooc">读取中国大学 MOOC</button>
+        </div>
+        <p class="hint" id="onlineHint">在 App 内打开课程页并登录，再点顶部「读取这一页」，未完成的作业会同步成待办。密码不会保存在本机。</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>AI 接口</h2><span class="chip" id="aiChip">未配置</span></div>
+        <div class="field"><label for="aiBase">接口地址（OpenAI 兼容）</label><input id="aiBase" type="url" inputmode="url" placeholder="https://api.openai.com/v1"></div>
+        <div class="field"><label for="aiModel">模型</label><input id="aiModel" type="text" placeholder="gpt-4o-mini"></div>
+        <div class="field"><label for="aiKey">API Key</label><input id="aiKey" type="password" autocomplete="off" placeholder="sk-…"></div>
+        <div class="field"><label for="aiCapacity">每天可用小时</label><input id="aiCapacity" type="number" min="0.5" max="24" step="0.5" inputmode="decimal"></div>
+        <div class="list-btns">
+          <button class="row-btn" type="button" id="aiSave">保存接口配置</button>
+          <button class="row-btn danger" type="button" id="aiClear">清除配置</button>
+        </div>
+        <p class="hint">密钥只存在这台设备上，不会上传到云服务。</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>数据</h2><span class="chip" id="dataChip">本地</span></div>
+        <div class="list-btns">
+          <button class="row-btn" type="button" id="exportBtn">导出备份（JSON）</button>
+          <button class="row-btn" type="button" id="importBtn">导入备份</button>
+          <button class="row-btn" type="button" id="cacheBtn">清理本地缓存</button>
+          <button class="row-btn" type="button" id="sampleBtn">载入示例学期</button>
+          <button class="row-btn danger" type="button" id="clearBtn">清空全部数据</button>
+        </div>
+        <p class="hint" id="dataHint">备份与电脑版通用：手机导出的 JSON，电脑版「导入备份」能直接读，反之亦然。</p>
+      </div>
+
+      <div class="card" id="webInstall" hidden>
+        <div class="card-head"><h2>装到手机上</h2></div>
+        <div class="list-btns">
+          <a class="row-btn" id="apkLink" href="download/PressureMap-android.apk" download>下载 Android 安装包（APK）</a>
+        </div>
+        <p class="hint">iPhone 用 Safari 打开本页，点底部分享按钮 →「添加到主屏幕」，就会像 App 一样全屏运行。</p>
+      </div>
+
+      <div class="card about">
+        <div class="brand-mark"><img src="icons/icon.svg" alt="" width="44" height="44"></div>
+        <div>
+          <p class="about-name">学期压力地图 · 手机版</p>
+          <p class="about-meta" id="aboutMeta">版本 1.0.0</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="tabbar" id="tabbar">
+    <button class="tab is-on" type="button" data-tab="today"><svg class="ico"><use href="#i-today"></use></svg><span>今日</span></button>
+    <button class="tab" type="button" data-tab="calendar"><svg class="ico"><use href="#i-calendar"></use></svg><span>课表</span></button>
+    <button class="tab" type="button" data-tab="todos"><svg class="ico"><use href="#i-todo"></use></svg><span>待办</span></button>
+    <button class="tab" type="button" data-tab="pressure"><svg class="ico"><use href="#i-chart"></use></svg><span>压力</span></button>
+    <button class="tab" type="button" data-tab="ai"><svg class="ico"><use href="#i-spark"></use></svg><span>AI</span></button>
+    <button class="tab" type="button" data-tab="settings"><svg class="ico"><use href="#i-settings"></use></svg><span>设置</span></button>
+  </nav>
+
+  <button class="fab" type="button" id="fab" aria-label="新建">
+    <svg class="ico"><use href="#i-plus"></use></svg>
+  </button>
+</div>
+
+<div class="sheet-wrap" id="sheetWrap" hidden>
+  <div class="sheet-backdrop" id="sheetBackdrop"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true">
+    <div class="sheet-grip"></div>
+    <div class="sheet-head">
+      <h2 id="sheetTitle">新建</h2>
+      <button class="icon-btn" type="button" id="sheetClose" aria-label="关闭"><svg class="ico"><use href="#i-close"></use></svg></button>
+    </div>
+    <form class="sheet-body" id="sheetForm"></form>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="fileInput" accept="application/json,.json" hidden>
+
+<script src="vendor/pdf.min.js"></script>
+<script src="pm-snapshot.js"></script>
+<script src="pm-calendar.js"></script>
+<script src="pm-remind.js"></script>
+<script src="pm-hdu.js"></script>
+<script src="pm-online.js"></script>
+<script src="pm-cloud.js"></script>
+<script src="pm-ai.js"></script>
+<script src="app.js"></script>
+<script src="pm-ui.js"></script>
+<script src="pm-i18n.js"></script>
+</body>
+</html>

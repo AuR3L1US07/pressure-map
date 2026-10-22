@@ -1,0 +1,4 @@
+services:
+  caddy:
+    volumes:
+      - /opt/pressure-map-website:/srv/pressure-map-website:ro

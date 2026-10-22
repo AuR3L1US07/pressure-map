@@ -1,0 +1,24 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- The native backdrop blurs wallpaper only; foreground controls remain opaque. -->
+  <Style Selector="Window.desktop-glass TextBlock"><Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/></Style>
+  <Style Selector="Window.desktop-glass TextBlock.caption, Window.desktop-glass TextBlock.muted"><Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}"/></Style>
+  <Style Selector="Window.desktop-glass TextBlock.danger"><Setter Property="Foreground" Value="{DynamicResource DangerBrush}"/></Style>
+  <Style Selector="Window.desktop-glass Button, Window.desktop-glass TextBox, Window.desktop-glass ComboBox">
+    <Setter Property="Background" Value="{DynamicResource GlassControlBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource GlassLineBrush}"/>
+    <Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="10"/>
+  </Style>
+  <Style Selector="Window.desktop-glass Button.icon"><Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Padding" Value="5,3"/></Style>
+  <Style Selector="Window.desktop-glass Button:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="{DynamicResource GlassHoverBrush}"/></Style>
+  <Style Selector="Window.desktop-glass Button.accent"><Setter Property="Background" Value="{DynamicResource AccentStrongBrush}"/><Setter Property="Foreground" Value="White"/><Setter Property="BorderThickness" Value="0"/></Style>
+  <Style Selector="Window.desktop-glass Button.accent:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="{DynamicResource AccentBrush}"/></Style>
+  <Style Selector="Window.desktop-glass Border.todo-row:pointerover"><Setter Property="Background" Value="{DynamicResource GlassControlBrush}"/></Style>
+  <Style Selector="Window.desktop-glass ListBox.todo-list ListBoxItem"><Setter Property="Background" Value="Transparent"/></Style>
+  <Style Selector="Window.desktop-glass CheckBox"><Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/><Setter Property="Background" Value="Transparent"/><Setter Property="VerticalContentAlignment" Value="Center"/></Style>
+  <Style Selector="Window.desktop-glass CheckBox /template/ ContentPresenter"><Setter Property="Background" Value="Transparent"/></Style>
+  <Style Selector="Window.desktop-glass ListBox.todo-list ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter, Window.desktop-glass ListBox.todo-list ListBoxItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource GlassSelectionBrush}"/>
+  </Style>
+  <Style Selector="Window.desktop-glass Button.ghost"><Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/></Style>
+</Styles>
