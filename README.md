@@ -8,7 +8,7 @@
 
 📅 看清安排　 ·　 ✅ 跟进任务　 ·　 📊 提前准备
 
-<img src="pressure-map-website/dist/assets/today-dashboard-v2.png" alt="桌面端今日概览：课程、待办、待提交任务和每日压力" width="100%">
+<img src="docs/images/desktop-today-20261021.png" alt="桌面端今日概览：课程、待办、待提交任务和每日压力" width="100%">
 
 </div>
 
@@ -27,7 +27,7 @@
 - **上课信息**：查看时间、教室，以及正在上课 / 未开始 / 已结束状态。
 - **独立管理**：重复导入同名文件更新原课表，可单独移除某份课表。
 
-<img src="pressure-map-website/dist/assets/course-calendar-v2.png" alt="课程日历：上课时间、课程与教室" width="100%">
+<img src="docs/images/desktop-calendar-20261020.png" alt="课程日历：上课时间、课程与教室" width="100%">
 
 ## ✅ 待办与作业
 
@@ -58,12 +58,7 @@ Windows 桌面提供三个独立组件：**✅ 待办清单 · 📚 今日课程
 
 组件贴在桌面层，不占任务栏；关闭主窗口后可通过系统托盘继续使用。
 
-<table>
-<tr>
-<td width="50%" align="center"><img src="pressure-map-website/dist/assets/desktop-todo.png" alt="桌面待办玻璃组件" width="100%"><br><b>✅ 桌面待办</b></td>
-<td width="50%" align="center"><img src="pressure-map-website/dist/assets/desktop-daily-pressure.png" alt="每日压力与来源组件" width="100%"><br><b>🎯 每日压力</b></td>
-</tr>
-</table>
+<img src="docs/images/desktop-pressure-sources-20261020.png" alt="新版压力来源：各项任务与课程的负荷占比" width="620">
 
 ## ✨ AI 今日安排
 
@@ -75,6 +70,8 @@ Windows 桌面提供三个独立组件：**✅ 待办清单 · 📚 今日课程
 - 🔌 **接口选择**：桌面端可使用默认服务或自定义 OpenAI 兼容接口；移动端需配置接口地址、模型和 API Key。
 
 生成结果供你确认，**不会自动修改任务**。
+
+<img src="docs/images/desktop-ai-20261021.png" alt="新版桌面端 AI 助手：补充要求与今日安排" width="100%">
 
 ## 🎓 网课进度
 
